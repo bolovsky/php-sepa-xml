@@ -73,6 +73,10 @@ $directDebit->asXML();
 ```php
 // Create the initiating information
 $groupHeader = new GroupHeader('SEPA File Identifier', 'Your Company Name');
+
+// Some portuguese banks require Fiscal Identification Number as Id
+$groupHeader->setInitiatingPartyId("123456789");
+
 $sepaFile = new CustomerCreditTransferFile($groupHeader);
 
 $transfer = new CustomerCreditTransferInformation(
@@ -82,6 +86,8 @@ $transfer = new CustomerCreditTransferInformation(
     );
 $transfer->setBic('OKOYFIHH'); // Set the BIC explicitly
 $transfer->setRemittanceInformation('Transaction Description');
+$sepa_transfer->setCode("SCOR"); // transaction code for this specific transfer, according to annex 5 (ISO codes billing/transfer reasons)
+$sepa_transfer->setReference("INV20140101A-033"); // reference number to descript this transaction, i.e. an invoice
 
 // Create a PaymentInformation the Transfer belongs to
 $payment = new PaymentInformation(

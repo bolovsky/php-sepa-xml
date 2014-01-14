@@ -19,6 +19,10 @@
         {
             "name": "Ricardo Lopes",
             "email": "doutrust@gmail.com"
+        },
+        {
+            "name": "Luis Soares",
+            "email": "luis.xsoares@gmail.com"
         }
     ],
     "autoload": {
