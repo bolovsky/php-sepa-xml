@@ -10,11 +10,10 @@ Creates an XML file for a Single Euro Payments Area (SEPA) Credit Transfer and D
 License: GNU Lesser General Public License v3.0
 
 
-The version of the standard followed is: _pain.001.002.03_ and _pain.008.002.02_
+The version of the standard followed is: _pain.001.001.03_ and _pain.008.001.02_
 
 Institutions and associations that should accept this format:
-* Deutsche Kreditwirtschaft
-* Fédération bancaire française
+* Banco de Portugal
 
 However, always verify generated files with your bank before using!
 

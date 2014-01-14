@@ -1,7 +1,7 @@
 {
-    "name": "digitick/sepa-xml",
+    "name": "bolovsky/sepa-xml",
     "type": "library",
-    "description": "Creates an XML file for a Single Euro Payments Area (SEPA) Credit Transfer.",
+    "description": "Creates an XML file for a Single Euro Payments Area (SEPA) Credit Transfer. Altered the original for compatibility with portuguese standards",
     "keywords": ["banking", "sepa", "xml"],
     "license": "GNU Lesser General Public License v3.0",
     "authors": [
@@ -15,6 +15,10 @@
         {
             "name": "Sören Rohweder (monofone)",
             "email": "s.rohweder@blage.net"
+        },
+        {
+            "name": "Ricardo Lopes",
+            "email": "doutrust@gmail.com"
         }
     ],
     "autoload": {
