@@ -18,6 +18,10 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @modified Ricardo Lopes <doutrust@gmail.com> 2014
+ * @modified Luis Soares <luis.xsoares@gmail.com> 2014
+ * Minor modifications to add fiscal id number, as needed in Portugal for certain banks
  */
 
 namespace Digitick\Sepa\DomBuilder;
@@ -70,9 +74,6 @@ class CustomerDirectDebitTransferDomBuilder extends BaseDomBuilder
         );
 
         $paymentTypeInformation = $this->createElement('PmtTpInf');
-        $serviceLevel = $this->createElement('SvcLvl');
-        $serviceLevel->appendChild($this->createElement('Cd', 'SEPA'));
-        $paymentTypeInformation->appendChild($serviceLevel);
         $this->currentPayment->appendChild($paymentTypeInformation);
         $localInstrument = $this->createElement('LclInstrm');
         if ($paymentInformation->getLocalInstrumentCode()) {
@@ -100,16 +101,12 @@ class CustomerDirectDebitTransferDomBuilder extends BaseDomBuilder
         $creditorAgent->appendChild($this->getFinancialInstitutionElement($paymentInformation->getOriginAgentBIC()));
         $this->currentPayment->appendChild($creditorAgent);
 
-        $this->currentPayment->appendChild($this->createElement('ChrgBr', 'SLEV'));
-
         $creditorSchemeId = $this->createElement('CdtrSchmeId');
         $id = $this->createElement('Id');
         $privateId = $this->createElement('PrvtId');
         $other = $this->createElement('Othr');
         $other->appendChild($this->createElement('Id', $paymentInformation->getCreditorId()));
-        $schemeName = $this->createElement('SchmeNm');
-        $schemeName->appendChild($this->createElement('Prtry', 'SEPA'));
-        $other->appendChild($schemeName);
+
         $privateId->appendChild($other);
         $id->appendChild($privateId);
         $creditorSchemeId->appendChild($id);

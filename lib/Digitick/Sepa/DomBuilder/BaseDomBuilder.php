@@ -148,29 +148,32 @@ abstract class BaseDomBuilder implements DomBuilderInterface
      * @param string $remittenceInformation
      * @return \DOMElement
      */
-    public function getRemittenceElement($remittenceInformation, $reference = false, $code = 'SCOR') {
+    public function getRemittenceElement($unstructured = false, $reference = false, $code = false) {
         $remittanceInformation = $this->createElement('RmtInf');
-        //@hack this is referent to 00x.002.0x type of info, we use 00x.001.0x
-        //$remittanceInformation->appendChild($this->createElement('Ustrd', $remittenceInformation));
 
-        //create the code element
-        $strd = $this->createElement('Strd');
-        $creditTransferInformation = $this->createElement("CdtrRefInf");
-        $tp = $this->createElement('Tp');
-        $cdorparty = $this->createElement('CdOrPrty');
-        $cd = $this->createElement('Cd', $code);
-
-        $cdorparty->appendChild($cd);
-        $tp->appendChild($cdorparty);
-        $creditTransferInformation->appendChild($tp);
-        $strd->appendChild($creditTransferInformation);
-
-        if ($reference) {
-            $strd->appendChild($this->createElement('Ref', $reference));
+        if ($unstructured!==false) {
+            $remittanceInformation->appendChild($this->createElement('Ustrd', $unstructured));
         }
 
-        $remittanceInformation->appendChild($strd);
+        if ($reference !== false || $code !== false) {
+            //create the code element
+            $strd = $this->createElement('Strd');
+            $creditTransferInformation = $this->createElement("CdtrRefInf");
+            $tp = $this->createElement('Tp');
+            $cdorparty = $this->createElement('CdOrPrty');
+            $cd = $this->createElement('Cd', $code);
 
+            $cdorparty->appendChild($cd);
+            $tp->appendChild($cdorparty);
+            $creditTransferInformation->appendChild($tp);
+            $strd->appendChild($creditTransferInformation);
+
+            if ($reference) {
+                $strd->appendChild($this->createElement('Ref', $reference));
+            }
+
+            $remittanceInformation->appendChild($strd);
+        }
 
         return $remittanceInformation;
     }
