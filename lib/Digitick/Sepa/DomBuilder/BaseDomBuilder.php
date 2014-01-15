@@ -158,16 +158,19 @@ abstract class BaseDomBuilder implements DomBuilderInterface
         if ($reference !== false || $code !== false) {
             //create the code element
             $strd = $this->createElement('Strd');
-            $creditTransferInformation = $this->createElement("CdtrRefInf");
-            $tp = $this->createElement('Tp');
-            $cdorparty = $this->createElement('CdOrPrty');
-            $cd = $this->createElement('Cd', $code);
 
-            $cdorparty->appendChild($cd);
-            $tp->appendChild($cdorparty);
-            $creditTransferInformation->appendChild($tp);
-            $strd->appendChild($creditTransferInformation);
+            if ($reference !== false) {
+                $creditTransferInformation = $this->createElement("CdtrRefInf");
+                $tp = $this->createElement('Tp');
+                $cdorparty = $this->createElement('CdOrPrty');
+                $cd = $this->createElement('Cd', $code);
 
+                $cdorparty->appendChild($cd);
+                $tp->appendChild($cdorparty);
+                $creditTransferInformation->appendChild($tp);
+                $strd->appendChild($creditTransferInformation);
+            }
+            //append reference if it exists
             if ($reference) {
                 $strd->appendChild($this->createElement('Ref', $reference));
             }
