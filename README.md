@@ -27,17 +27,12 @@ In the "require" section of your composer.json file:
 
 Always up to date (bleeding edge, API *not* guaranteed stable)
 ```javascript
-"digitick/sepa-xml" : "dev-master"
+"bolovsky/sepa-xml" : "dev-master"
 ```
 
 No namespaces, only bugfixes
 ```javascript
 "digitick/sepa-xml" : "dev-no_namespace"
-```
-
-Specific minor version, API stability
-```javascript
-"digitick/sepa-xml" : "0.10.*"
 ```
 
 ##Sample Usage DirectDebit with Factory

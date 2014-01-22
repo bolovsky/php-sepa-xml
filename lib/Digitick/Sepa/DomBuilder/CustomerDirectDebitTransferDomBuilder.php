@@ -37,7 +37,7 @@ use Digitick\Sepa\TransferFile\TransferFileInterface;
 class CustomerDirectDebitTransferDomBuilder extends BaseDomBuilder
 {
 
-    public function __construct($painFormat = 'pain.008.002.02')
+    public function __construct($painFormat = 'pain.008.001.02')
     {
         parent::__construct($painFormat);
     }

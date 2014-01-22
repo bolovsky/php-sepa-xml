@@ -23,6 +23,10 @@
         {
             "name": "Luis Soares",
             "email": "luis.xsoares@gmail.com"
+        },
+        {
+            "name": "André Filipe",
+            "email": "andre.r.flip@gmail.com"
         }
     ],
     "autoload": {
